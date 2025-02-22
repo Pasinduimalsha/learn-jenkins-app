@@ -26,6 +26,7 @@ pipeline {
         }
 
         stage('Test') {
+
             agent {
                 docker {
                     image 'node:22-alpine'
@@ -35,6 +36,8 @@ pipeline {
 
             steps {
                 sh '''
+                    node --version
+                    npm --version
                     test -f build/index.html
                     npm test
                 '''
